@@ -237,14 +237,14 @@ class Serializer extends \XMLWriter implements LoggerAwareInterface {
     }
     $element['#text'] = strtr($element['#text'], $namedTable);
 
-    try {
-      $converter = new Converter($element['#text'], $this->sourceLang, $targetLang);
-      if ($this->logger) {
-        $converter->setLogger($this->logger);
-      }
-      $this->writeRaw($converter->toXLIFF());
-    }
-    catch (\Exception $e) {
+//    try {
+//      $converter = new Converter($element['#text'], $this->sourceLang, $targetLang);
+//      if ($this->logger) {
+//        $converter->setLogger($this->logger);
+//      }
+//      $this->writeRaw($converter->toXLIFF());
+//    }
+//    catch (\Exception $e) {
       $this->startElement('trans-unit');
       $this->writeAttribute('id', uniqid('text-'));
       $this->writeAttribute('restype', 'x-eggs-n-cereal-failure');
@@ -258,7 +258,7 @@ class Serializer extends \XMLWriter implements LoggerAwareInterface {
       $this->text($element['#text']);
       $this->endElement();
       $this->endElement();
-    }
+//    }
     if (isset($element['#label'])) {
       $this->writeElement('note', $element['#label']);
     }
