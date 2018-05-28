@@ -255,7 +255,7 @@ class Serializer extends \XMLWriter implements LoggerAwareInterface {
 
       $this->startElement('target');
       $this->writeAttribute('xml:lang', $targetLang);
-      $this->text($element['#text']);
+      $this->text($element['#translated']);
       $this->endElement();
       $this->endElement();
 //    }
